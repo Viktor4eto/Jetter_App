@@ -10,8 +10,12 @@ namespace Jetter_App
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+
+            string source = @"LAB109PC08\SQLEXPRESS";
+            string database = @"Data Source=" + source + "; Initial Catalog=Jetter; Integrated Security=True;";
+
             ApplicationConfiguration.Initialize();
-            Application.Run(new Log_In());
+            Application.Run(new Log_In(database));
         }
     }
 }
