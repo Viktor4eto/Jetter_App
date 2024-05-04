@@ -1,6 +1,6 @@
 ﻿namespace Jetter_App
 {
-    partial class Register
+    partial class RegisterVendor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            username = new TextBox();
+            vendorName = new TextBox();
             email = new TextBox();
             password = new TextBox();
             re_password = new TextBox();
-            firstName = new TextBox();
-            lastName = new TextBox();
+            contactPerson = new TextBox();
             phone = new TextBox();
             address = new TextBox();
             register_button = new Button();
@@ -56,21 +55,21 @@
             label1.Name = "label1";
             label1.Size = new Size(911, 104);
             label1.TabIndex = 0;
-            label1.Text = "Welcome to Jetters! Please register and then you can rent and travel safely and reliably!";
+            label1.Text = "Welcome to Jetters! Fill out this form to register as a vendor and start renting out your assests!";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
-            // username
+            // vendorName
             // 
-            username.Location = new Point(188, 187);
-            username.Name = "username";
-            username.PlaceholderText = "Username";
-            username.Size = new Size(641, 47);
-            username.TabIndex = 2;
-            username.Validated += username_Validated;
+            vendorName.Location = new Point(188, 252);
+            vendorName.Name = "vendorName";
+            vendorName.PlaceholderText = "Vendor Name";
+            vendorName.Size = new Size(641, 47);
+            vendorName.TabIndex = 2;
+            vendorName.Validated += vendorName_Validated;
             // 
             // email
             // 
-            email.Location = new Point(188, 251);
+            email.Location = new Point(188, 316);
             email.Name = "email";
             email.PlaceholderText = "E-Mail Address";
             email.Size = new Size(641, 47);
@@ -79,7 +78,7 @@
             // 
             // password
             // 
-            password.Location = new Point(188, 316);
+            password.Location = new Point(188, 381);
             password.Name = "password";
             password.PasswordChar = '*';
             password.PlaceholderText = "Password";
@@ -91,7 +90,7 @@
             // 
             // re_password
             // 
-            re_password.Location = new Point(188, 384);
+            re_password.Location = new Point(188, 449);
             re_password.Name = "re_password";
             re_password.PasswordChar = '*';
             re_password.PlaceholderText = "Re-enter Password";
@@ -100,25 +99,17 @@
             re_password.TextChanged += re_password_Validating;
             re_password.Enter += re_password_Focus;
             // 
-            // firstName
+            // contactPerson
             // 
-            firstName.Location = new Point(188, 448);
-            firstName.Name = "firstName";
-            firstName.PlaceholderText = "First Name";
-            firstName.Size = new Size(641, 47);
-            firstName.TabIndex = 6;
-            // 
-            // lastName
-            // 
-            lastName.Location = new Point(188, 512);
-            lastName.Name = "lastName";
-            lastName.PlaceholderText = "Last Name";
-            lastName.Size = new Size(641, 47);
-            lastName.TabIndex = 7;
+            contactPerson.Location = new Point(188, 513);
+            contactPerson.Name = "contactPerson";
+            contactPerson.PlaceholderText = "Contact Person";
+            contactPerson.Size = new Size(641, 47);
+            contactPerson.TabIndex = 6;
             // 
             // phone
             // 
-            phone.Location = new Point(188, 581);
+            phone.Location = new Point(188, 579);
             phone.Name = "phone";
             phone.PlaceholderText = "Phone Number";
             phone.Size = new Size(641, 47);
@@ -127,7 +118,7 @@
             // 
             // address
             // 
-            address.Location = new Point(188, 649);
+            address.Location = new Point(188, 644);
             address.Name = "address";
             address.PlaceholderText = "Address";
             address.Size = new Size(641, 47);
@@ -147,7 +138,7 @@
             // password_state
             // 
             password_state.Image = Properties.Resources.not_hidden;
-            password_state.Location = new Point(781, 316);
+            password_state.Location = new Point(781, 381);
             password_state.Name = "password_state";
             password_state.Size = new Size(61, 47);
             password_state.SizeMode = PictureBoxSizeMode.Zoom;
@@ -158,7 +149,7 @@
             // re_password_state
             // 
             re_password_state.Image = Properties.Resources.not_hidden;
-            re_password_state.Location = new Point(781, 384);
+            re_password_state.Location = new Point(781, 449);
             re_password_state.Name = "re_password_state";
             re_password_state.Size = new Size(61, 47);
             re_password_state.SizeMode = PictureBoxSizeMode.Zoom;
@@ -222,11 +213,11 @@
             back.Location = new Point(56, 1022);
             back.Name = "back";
             back.Size = new Size(126, 41);
-            back.TabIndex = 18;
+            back.TabIndex = 17;
             back.Text = "Go Back";
             back.Click += back_Click;
             // 
-            // Register
+            // RegisterVendor
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -242,14 +233,13 @@
             Controls.Add(register_button);
             Controls.Add(address);
             Controls.Add(phone);
-            Controls.Add(lastName);
-            Controls.Add(firstName);
+            Controls.Add(contactPerson);
             Controls.Add(re_password);
             Controls.Add(password);
             Controls.Add(email);
-            Controls.Add(username);
+            Controls.Add(vendorName);
             Controls.Add(label1);
-            Name = "Register";
+            Name = "RegisterVendor";
             Text = "Register";
             ((System.ComponentModel.ISupportInitialize)password_state).EndInit();
             ((System.ComponentModel.ISupportInitialize)re_password_state).EndInit();
@@ -260,12 +250,11 @@
         #endregion
 
         private Label label1;
-        private TextBox username;
+        private TextBox vendorName;
         private TextBox email;
         private TextBox password;
         private TextBox re_password;
-        private TextBox firstName;
-        private TextBox lastName;
+        private TextBox contactPerson;
         private TextBox phone;
         private TextBox address;
         private Button register_button;

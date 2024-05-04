@@ -1,12 +1,20 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Jetter_App
 {
-    public partial class Register : Form
+    public partial class RegisterVendor : Form
     {
-
-        public Register()
+        public RegisterVendor()
         {
             InitializeComponent();
         }
@@ -43,38 +51,38 @@ namespace Jetter_App
             }
         }
 
-        private void username_Validated(object sender, EventArgs e)
+        private void vendorName_Validated(object sender, EventArgs e)
         {
-            string Username = username.Text;
+            string vendorName = this.vendorName.Text;
 
-            if (isDistinctUsername(Username) && Username != "")
+            if (isDistinctVendorName(vendorName) && vendorName != "")
             {
-                label2.Text = "Great username choice!";
+                label2.Text = "Welcome " + vendorName;
                 label2.Visible = true;
                 label2.ForeColor = Color.Green;
             }
-            else if (Username == "")
+            else if (vendorName == "")
             {
                 MessageBox.Show($"Please enter a username.", "Username Empty", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                username.Focus();
+                this.vendorName.Focus();
             }
             else
             {
-                MessageBox.Show($"The username '{Username}' is already taken.", "Username Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                username.Focus();
+                MessageBox.Show($"The username '{vendorName}' is already taken.", "Username Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.vendorName.Focus();
 
             }
         }
 
-        private bool isDistinctUsername(string username)
+        private bool isDistinctVendorName(string vendorName)
         {
-            string query = "SELECT COUNT(*) FROM [User] WHERE Username = @Username";
+            string query = "SELECT COUNT(*) FROM Vendor WHERE VendorName = @VendorName";
 
             using (SqlConnection connection = new SqlConnection(Program.getDatabase()))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@VendorName", vendorName);
 
                     connection.Open();
                     int count = (int)command.ExecuteScalar();
@@ -164,9 +172,9 @@ namespace Jetter_App
             string RePassword = re_password.Text;
             string Password = password.Text;
 
-            if (username.Text == "")
+            if (vendorName.Text == "")
             {
-                MessageBox.Show("Please enter a username.", "Missing Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a vendor name.", "Missing Vendor Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -188,15 +196,9 @@ namespace Jetter_App
                 return;
             }
 
-            if (firstName.Text == "")
+            if (contactPerson.Text == "")
             {
-                MessageBox.Show("Please enter your first name.", "Missing First Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (lastName.Text == "")
-            {
-                MessageBox.Show("Please enter your last name.", "Missing Last Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a contact person.", "Missing Contact Person", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -213,29 +215,28 @@ namespace Jetter_App
                 return;
             }
 
-            string query = "INSERT INTO [User] (Username, Password, Email, Role, FirstName, LastName, PhoneNumber, Address) VALUES (@Username, @Password, @Email, @Role, @FirstName, @LastName, @PhoneNumber, @Address)";
+            string query = "INSERT INTO Vendor (VendorName, ContactPerson, Email, PhoneNumber, Address, VendorPassword) VALUES (@VendorName, @ContactPerson, @Email, @PhoneNumber, @Address, @VendorPassword)";
 
             using (SqlConnection connection = new SqlConnection(Program.getDatabase()))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Username", username.Text);
-                    command.Parameters.AddWithValue("@Password", password.Text);
+                    command.Parameters.AddWithValue("@VendorName", vendorName.Text);
+                    command.Parameters.AddWithValue("@ContactPerson", contactPerson.Text);
                     command.Parameters.AddWithValue("@Email", email.Text);
-                    command.Parameters.AddWithValue("@Role", "customer");
-                    command.Parameters.AddWithValue("@FirstName", firstName.Text);
-                    command.Parameters.AddWithValue("@LastName", lastName.Text);
                     command.Parameters.AddWithValue("@PhoneNumber", phone.Text);
                     command.Parameters.AddWithValue("@Address", address.Text);
+                    command.Parameters.AddWithValue("@VendorPassword", password.Text);
+
 
                     connection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("You successfully registered to Jetters!", "Congratulations!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Log_In log_In = new Log_In();
-                        log_In.Show();
+                        MessageBox.Show("You are officially a vendor at Jetters!", "Congratulations!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Vendor_Log_In vendor_log_In = new Vendor_Log_In();
+                        vendor_log_In.Show();
                         this.Hide();
 
                     }
@@ -265,8 +266,8 @@ namespace Jetter_App
 
         private void back_Click(object sender, EventArgs e)
         {
-            Log_In log_In = new Log_In();
-            log_In.Show();
+            Vendor_Log_In vendor_log_In = new Vendor_Log_In();
+            vendor_log_In.Show();
             this.Hide();
         }
     }
