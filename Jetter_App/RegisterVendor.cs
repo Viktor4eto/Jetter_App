@@ -120,9 +120,12 @@ namespace Jetter_App
             label4.Visible = true;
             label5.Visible = true;
 
-            label3.ForeColor = Color.Red;
-            label4.ForeColor = Color.Red;
-            label5.ForeColor = Color.Red;
+            if (password.Text == "")
+            {
+                label3.ForeColor = Color.Red;
+                label4.ForeColor = Color.Red;
+                label5.ForeColor = Color.Red;
+            }
         }
 
         private void password_Validating(object sender, EventArgs e)
@@ -133,15 +136,27 @@ namespace Jetter_App
             {
                 label3.ForeColor = Color.Green;
             }
+            else
+            {
+                label3.ForeColor = Color.Red;
+            }
 
             if (!Password.ToLower().Equals(Password))
             {
                 label4.ForeColor = Color.Green;
             }
+            else
+            {
+                label4.ForeColor = Color.Red;
+            }
 
             if (Regex.IsMatch(Password, @"\d"))
             {
                 label5.ForeColor = Color.Green;
+            }
+            else
+            {
+                label6.ForeColor = Color.Red;
             }
         }
 
@@ -149,7 +164,8 @@ namespace Jetter_App
         {
             label6.Text = "The password and re-password must match!";
             label6.Visible = true;
-            label6.ForeColor = Color.Red;
+            if (re_password.Text == "")
+                label6.ForeColor = Color.Red;
         }
 
         private void re_password_Validating(object sender, EventArgs e)
