@@ -261,6 +261,11 @@ namespace Jetter_App
 
         }
 
-
+        private void back_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            VendorWindow vendorWindow = new VendorWindow(this.vendor);
+            vendorWindow.Show();
+        }
     }
 }
