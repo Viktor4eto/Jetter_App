@@ -41,10 +41,10 @@
             // 
             display.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             display.Location = new Point(198, 70);
-            display.Margin = new Padding(6, 6, 6, 6);
+            display.Margin = new Padding(6);
             display.Name = "display";
             display.RowHeadersWidth = 51;
-            display.RowTemplate.Height = 29;
+            display.RowTemplate.Height = 40;
             display.Size = new Size(1273, 691);
             display.TabIndex = 0;
             // 
@@ -110,7 +110,7 @@
             Controls.Add(confirmed_amount);
             Controls.Add(confirmed_count);
             Controls.Add(display);
-            Margin = new Padding(6, 6, 6, 6);
+            Margin = new Padding(6);
             Name = "VendorPayments";
             Text = "VendorPayments";
             ((System.ComponentModel.ISupportInitialize)display).EndInit();

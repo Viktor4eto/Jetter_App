@@ -55,7 +55,7 @@
             display.Location = new Point(100, 134);
             display.Name = "display";
             display.RowHeadersWidth = 51;
-            display.RowTemplate.Height = 29;
+            display.RowTemplate.Height = 40;
             display.Size = new Size(636, 346);
             display.TabIndex = 0;
             // 

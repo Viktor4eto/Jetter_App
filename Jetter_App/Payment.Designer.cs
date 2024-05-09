@@ -43,7 +43,7 @@
             pending.Location = new Point(97, 25);
             pending.Name = "pending";
             pending.RowHeadersWidth = 51;
-            pending.RowTemplate.Height = 29;
+            pending.RowTemplate.Height = 40;
             pending.Size = new Size(611, 295);
             pending.TabIndex = 0;
             // 
