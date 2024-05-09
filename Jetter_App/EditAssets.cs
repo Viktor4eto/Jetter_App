@@ -66,7 +66,7 @@ namespace Jetter_App
                 hasUpdates = true;
             }
 
-            updateQuery += $" WHERE VendorID = @VendorID AND AssetID = (SELECT AssetID FROM Asset WHERE AssetType = @AssetType)";
+            updateQuery += $" WHERE VendorID = @VendorID AND AssetID = (SELECT AssetID FROM Asset WHERE AssetID = @AssetID)";
 
             // Execute the SQL update query
             using (SqlConnection connection = new SqlConnection(Program.getDatabase()))
@@ -74,7 +74,7 @@ namespace Jetter_App
             {
                 connection.Open();
                 command.Parameters.AddWithValue("@VendorID", vendor.VendorID);
-                command.Parameters.AddWithValue("@AssetType", selectedAssetType);
+                command.Parameters.AddWithValue("@AssetID", selectedAssetType);
                 int rowsAffected = command.ExecuteNonQuery();
 
                 if (rowsAffected > 0)
