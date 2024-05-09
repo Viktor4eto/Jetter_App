@@ -46,7 +46,7 @@ namespace Jetter_App
             return availability;
         }
 
-        public void UpdateAvailability()
+        public static void UpdateAvailability()
         {
             string query = @"UPDATE Asset
                             SET Availability = CASE 
@@ -96,7 +96,7 @@ namespace Jetter_App
 
         private void booking_Click(object sender, EventArgs e)
         {
-            //UpdateAvailability();
+            UpdateAvailability();
 
             using (SqlConnection sqlCon = new SqlConnection(Program.getDatabase()))
             {
@@ -135,7 +135,7 @@ namespace Jetter_App
 
                             int bookingID = (int)com.ExecuteScalar();
 
-                            MessageBox.Show("Please consider paying as your booking is not confirmed until you do so.", "Asset booked.", MessageBoxButtons.OK);
+                            MessageBox.Show("Please consider paying as your booking is not confirmed until you do so.", "Asset booked.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             UpdateAvailability();
 

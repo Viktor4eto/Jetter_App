@@ -46,9 +46,10 @@ namespace Jetter_App
             // 
             // register_label
             // 
-            register_label.Location = new Point(728, 1034);
+            register_label.Location = new Point(343, 504);
+            register_label.Margin = new Padding(1, 0, 1, 0);
             register_label.Name = "register_label";
-            register_label.Size = new Size(235, 82);
+            register_label.Size = new Size(111, 40);
             register_label.TabIndex = 0;
             register_label.Text = "Not registered as a vendor?";
             register_label.TextAlign = ContentAlignment.TopCenter;
@@ -56,26 +57,29 @@ namespace Jetter_App
             // 
             // vendorName
             // 
-            vendorName.Location = new Point(229, 761);
+            vendorName.Location = new Point(108, 371);
+            vendorName.Margin = new Padding(1, 1, 1, 1);
             vendorName.Name = "vendorName";
             vendorName.PlaceholderText = "Vendor Name";
-            vendorName.Size = new Size(568, 47);
+            vendorName.Size = new Size(269, 27);
             vendorName.TabIndex = 2;
             // 
             // password
             // 
-            password.Location = new Point(229, 877);
+            password.Location = new Point(108, 428);
+            password.Margin = new Padding(1, 1, 1, 1);
             password.Name = "password";
             password.PasswordChar = '*';
             password.PlaceholderText = "Password";
-            password.Size = new Size(515, 47);
+            password.Size = new Size(244, 27);
             password.TabIndex = 4;
             // 
             // logIn
             // 
-            logIn.Location = new Point(353, 936);
+            logIn.Location = new Point(166, 457);
+            logIn.Margin = new Padding(1, 1, 1, 1);
             logIn.Name = "logIn";
-            logIn.Size = new Size(297, 51);
+            logIn.Size = new Size(140, 31);
             logIn.TabIndex = 1;
             logIn.Text = "Log In";
             logIn.UseVisualStyleBackColor = true;
@@ -84,9 +88,10 @@ namespace Jetter_App
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.logo;
-            pictureBox1.Location = new Point(130, 30);
+            pictureBox1.Location = new Point(61, 15);
+            pictureBox1.Margin = new Padding(1, 1, 1, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(742, 673);
+            pictureBox1.Size = new Size(349, 328);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -94,9 +99,10 @@ namespace Jetter_App
             // password_state
             // 
             password_state.Image = Properties.Resources.not_hidden;
-            password_state.Location = new Point(750, 877);
+            password_state.Location = new Point(353, 428);
+            password_state.Margin = new Padding(1, 1, 1, 1);
             password_state.Name = "password_state";
-            password_state.Size = new Size(61, 47);
+            password_state.Size = new Size(29, 23);
             password_state.SizeMode = PictureBoxSizeMode.Zoom;
             password_state.TabIndex = 6;
             password_state.TabStop = false;
@@ -104,27 +110,29 @@ namespace Jetter_App
             // 
             // email
             // 
-            email.Location = new Point(229, 820);
+            email.Location = new Point(108, 400);
+            email.Margin = new Padding(1, 1, 1, 1);
             email.Name = "email";
             email.PlaceholderText = "E-Mail";
-            email.Size = new Size(568, 47);
+            email.Size = new Size(269, 27);
             email.TabIndex = 3;
             // 
             // back
             // 
             back.AutoSize = true;
-            back.Location = new Point(48, 1060);
+            back.Location = new Point(23, 517);
+            back.Margin = new Padding(1, 0, 1, 0);
             back.Name = "back";
-            back.Size = new Size(126, 41);
+            back.Size = new Size(63, 20);
             back.TabIndex = 18;
             back.Text = "Go Back";
             back.Click += back_Click;
             // 
             // Vendor_Log_In
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(988, 1151);
+            ClientSize = new Size(465, 561);
             Controls.Add(back);
             Controls.Add(email);
             Controls.Add(password_state);
@@ -133,6 +141,7 @@ namespace Jetter_App
             Controls.Add(password);
             Controls.Add(vendorName);
             Controls.Add(register_label);
+            Margin = new Padding(1, 1, 1, 1);
             Name = "Vendor_Log_In";
             Text = "Vendor Log In";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

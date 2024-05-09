@@ -44,6 +44,8 @@
             book = new Button();
             compare = new Button();
             viewAll = new Button();
+            viewBookings = new Button();
+            delete = new Button();
             ((System.ComponentModel.ISupportInitialize)display).BeginInit();
             SuspendLayout();
             // 
@@ -159,9 +161,9 @@
             // 
             // reset
             // 
-            reset.Location = new Point(358, 539);
+            reset.Location = new Point(356, 579);
             reset.Name = "reset";
-            reset.Size = new Size(131, 26);
+            reset.Size = new Size(131, 34);
             reset.TabIndex = 12;
             reset.Text = "Reset";
             reset.UseVisualStyleBackColor = true;
@@ -169,9 +171,9 @@
             // 
             // book
             // 
-            book.Location = new Point(672, 574);
+            book.Location = new Point(672, 579);
             book.Name = "book";
-            book.Size = new Size(133, 26);
+            book.Size = new Size(133, 34);
             book.TabIndex = 13;
             book.Text = "Book Now!";
             book.UseVisualStyleBackColor = true;
@@ -179,9 +181,9 @@
             // 
             // compare
             // 
-            compare.Location = new Point(12, 574);
+            compare.Location = new Point(12, 579);
             compare.Name = "compare";
-            compare.Size = new Size(131, 26);
+            compare.Size = new Size(131, 34);
             compare.TabIndex = 14;
             compare.Text = "Compare";
             compare.UseVisualStyleBackColor = true;
@@ -189,19 +191,41 @@
             // 
             // viewAll
             // 
-            viewAll.Location = new Point(358, 574);
+            viewAll.Location = new Point(356, 539);
             viewAll.Name = "viewAll";
-            viewAll.Size = new Size(131, 26);
+            viewAll.Size = new Size(131, 34);
             viewAll.TabIndex = 15;
             viewAll.Text = "View All";
             viewAll.UseVisualStyleBackColor = true;
             viewAll.Click += viewAll_Click;
             // 
+            // viewBookings
+            // 
+            viewBookings.Location = new Point(12, 12);
+            viewBookings.Name = "viewBookings";
+            viewBookings.Size = new Size(189, 32);
+            viewBookings.TabIndex = 16;
+            viewBookings.Text = "View Your Bookings";
+            viewBookings.UseVisualStyleBackColor = true;
+            viewBookings.Click += viewBookings_Click;
+            // 
+            // delete
+            // 
+            delete.Location = new Point(616, 12);
+            delete.Name = "delete";
+            delete.Size = new Size(189, 32);
+            delete.TabIndex = 17;
+            delete.Text = "Delete This User";
+            delete.UseVisualStyleBackColor = true;
+            delete.Click += delete_Click;
+            // 
             // Bookings
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(817, 612);
+            ClientSize = new Size(817, 625);
+            Controls.Add(delete);
+            Controls.Add(viewBookings);
             Controls.Add(viewAll);
             Controls.Add(compare);
             Controls.Add(book);
@@ -243,5 +267,7 @@
         private Button book;
         private Button compare;
         private Button viewAll;
+        private Button viewBookings;
+        private Button delete;
     }
 }

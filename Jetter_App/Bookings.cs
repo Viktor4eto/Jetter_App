@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -85,7 +86,7 @@ namespace Jetter_App
             {
                 sqlCon.Open();
 
-                string query = "SELECT AssetID AS 'Asset ID', AssetType AS Type, AssetName AS Name, Description, Manufacturer, DailyRate AS 'Daily Rate', Availability, Location" +
+                string query = "SELECT AssetID AS 'Asset ID', AssetType AS Type, AssetName AS Name, Description, Manufacturer, Model, DailyRate AS 'Daily Rate', Availability, Location" +
                                 " FROM Asset WHERE " + searchBy_Handler() + " LIKE @text";
 
                 DataTable dataTable = new DataTable();
@@ -110,7 +111,7 @@ namespace Jetter_App
             {
                 sqlCon.Open(); // Open SQL connection
 
-                string query = "SELECT AssetID AS 'Asset ID', AssetType AS Type, AssetName AS Name, Description, Manufacturer, DailyRate AS 'Daily Rate', Availability, Location" +
+                string query = "SELECT AssetID AS 'Asset ID', AssetType AS Type, AssetName AS Name, Description, Manufacturer, Model, DailyRate AS 'Daily Rate', Availability, Location" +
                     " FROM Asset WHERE 1 = 1";
 
                 List<string> conditions = new List<string>();
@@ -184,7 +185,7 @@ namespace Jetter_App
             {
                 sqlCon.Open(); // Open SQL connection
 
-                string query = "SELECT AssetID AS 'Asset ID', AssetType AS Type, AssetName AS Name, Description, Manufacturer, DailyRate AS 'Daily Rate', Availability, Location" +
+                string query = "SELECT AssetID AS 'Asset ID', AssetType AS Type, AssetName AS Name, Description, Manufacturer, Model, DailyRate AS 'Daily Rate', Availability, Location" +
                     " FROM Asset";
 
                 SqlCommand cmd = new SqlCommand(query, sqlCon);
@@ -197,5 +198,44 @@ namespace Jetter_App
                 }
             }
         }
-    }
+
+        private void viewBookings_Click(object sender, EventArgs e)
+        {
+            YourBookings your = new YourBookings(this.user); 
+            your.Show();
+            this.Hide();
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // If the user confirms the deletion, proceed with deletion
+            if (result == DialogResult.Yes)
+            {
+                using (SqlConnection sqlCon = new SqlConnection(Program.getDatabase()))
+                {
+                    string query = "DELETE FROM [User] WHERE UserID = @id";
+                    sqlCon.Open();
+
+                    SqlCommand cmd = new SqlCommand(query, sqlCon);
+                    cmd.Parameters.AddWithValue("@id", this.user.UserID);
+                    cmd.ExecuteNonQuery();
+
+                    sqlCon.Close();
+
+                    this.Close();
+
+                    MessageBox.Show("User deleted successfully!", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Book.UpdateAvailability();
+
+                    Log_In logIn = new Log_In();
+                    logIn.Show();
+                }
+
+
+            }
+        }
+        }
 }

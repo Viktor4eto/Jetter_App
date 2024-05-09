@@ -55,7 +55,8 @@ CREATE TABLE Vendor (
     ContactPerson VARCHAR(100),
     Email VARCHAR(100) UNIQUE NOT NULL,
     PhoneNumber VARCHAR(20),
-    Address VARCHAR(255)
+    Address VARCHAR(255),
+    VendorPassword VARCHAR(255)
 );
 
 -- Create Vendor Asset Table
@@ -66,3 +67,13 @@ CREATE TABLE VendorAsset (
     QuantityAvailable INT,
     RentalLocations VARCHAR(MAX)  -- If vendor has multiple locations
 );
+
+ALTER TABLE Booking
+ADD CONSTRAINT FK_Booking_UserID FOREIGN KEY (UserID)
+REFERENCES [User](UserID)
+ON DELETE CASCADE;
+
+ALTER TABLE Payment
+ADD CONSTRAINT FK_Payment_BookingID FOREIGN KEY (BookingID)
+REFERENCES Booking(BookingID)
+ON DELETE CASCADE;

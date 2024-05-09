@@ -8,6 +8,14 @@ VALUES
 ('sarah_jones', 'hashed_password_789', 'sarah@example.com', 'customer', 'Sarah', 'Jones', '1112223333', '789 Maple St', NULL),
 ('mike_smith', 'hashed_password_abc', 'mike@example.com', 'customer', 'Mike', 'Smith', '4445556666', '456 Elm St', NULL);
 
+INSERT INTO [User] (Username, [Password], Email, Role, FirstName, LastName, PhoneNumber, Address, PaymentDetails)
+VALUES 
+('emily_davis', 'hashed_password_xyz', 'emily@example.com', 'customer', 'Emily', 'Davis', '7778889999', '987 Oak St', NULL),
+('admin2', 'admin_password_2', 'admin2@example.com', 'admin', 'Admin', 'Two', '5559876543', '456 Pine St', NULL),
+('mark_thompson', 'hashed_password_789', 'mark@example.com', 'customer', 'Mark', 'Thompson', '1113334444', '654 Maple St', NULL),
+('peter_wilson', 'hashed_password_def', 'peter@example.com', 'customer', 'Peter', 'Wilson', '5556667777', '789 Cedar St', NULL);
+
+
 -- Insert more mock data into Asset table
 INSERT INTO Asset (AssetType, AssetName, Description, Manufacturer, Model, [Year], HourlyRate, DailyRate, Availability, [Location])
 VALUES 
@@ -18,6 +26,15 @@ VALUES
 ('jet ski', 'Yamaha WaveRunner', 'Thrilling personal watercraft.', 'Yamaha', 'WaveRunner', 2021, 20.00, 120.00, 1, 'Miami'),
 ('bicycle', 'Trek Mountain Bike', 'Great for outdoor adventures.', 'Trek', 'Mountain Bike', 2022, 5.00, 30.00, 1, 'New York');
 
+INSERT INTO Asset (AssetType, AssetName, Description, Manufacturer, Model, [Year], HourlyRate, DailyRate, Availability, [Location])
+VALUES 
+('car', 'Honda Civic', 'Compact and fuel-efficient.', 'Honda', 'Civic', 2017, 8.00, 45.00, 1, 'Los Angeles'),
+('boat', 'Sailboat', 'Perfect for leisurely cruises.', 'SailAway Inc.', 'Seafarer', 2019, 30.00, 200.00, 1, 'Miami'),
+('motorcycle', 'Ducati Monster', 'Powerful and stylish.', 'Ducati', 'Monster', 2020, 20.00, 100.00, 1, 'New York'),
+('RV', 'Airstream Interstate', 'Luxurious camper van.', 'Airstream', 'Interstate', 2018, 40.00, 250.00, 1, 'Las Vegas'),
+('jet ski', 'Kawasaki Jet Ski', 'High-performance watercraft.', 'Kawasaki', 'Jet Ski', 2023, 25.00, 150.00, 1, 'Miami'),
+('bicycle', 'Specialized Road Bike', 'Designed for speed and agility.', 'Specialized', 'Road Bike', 2021, 7.00, 40.00, 1, 'Los Angeles');
+
 -- Insert more mock data into Booking table
 INSERT INTO Booking (UserID, AssetID, BookingStartDate, BookingEndDate, TotalAmount, BookingStatus)
 VALUES 
@@ -27,25 +44,59 @@ VALUES
 (4, 4, '2024-04-15', '2024-04-18', 600.00, 'confirmed'),
 (5, 5, '2024-04-20', '2024-04-22', 240.00, 'confirmed');
 
+INSERT INTO Booking (UserID, AssetID, BookingStartDate, BookingEndDate, TotalAmount, BookingStatus)
+VALUES 
+(6, 6, '2024-05-01', '2024-05-03', 80.00, 'confirmed'),
+(7, 1, '2024-05-05', '2024-05-08', 120.00, 'pending'),
+(8, 2, '2024-05-10', '2024-05-12', 500.00, 'confirmed'),
+(9, 3, '2024-05-15', '2024-05-18', 180.00, 'confirmed'),
+(10, 4, '2024-05-20', '2024-05-22', 700.00, 'pending');
+
 -- Insert more mock data into Payment table
 INSERT INTO Payment (BookingID, Amount, PaymentDate, PaymentStatus, PaymentMethod)
 VALUES 
 (1, 100.00, '2024-03-31 12:00:00', 'successful', 'credit card'),
-(2, NULL, NULL, 'pending', NULL),  -- Payment not yet processed
+(2, 450.00, NULL, 'pending', NULL), 
 (3, 160.00, '2024-04-09 09:00:00', 'successful', 'paypal'),
 (4, 600.00, '2024-04-14 10:00:00', 'successful', 'credit card'),
 (5, 240.00, '2024-04-19 11:00:00', 'successful', 'paypal');
 
--- Insert more mock data into Vendor table
-INSERT INTO Vendor (VendorName, ContactPerson, Email, PhoneNumber, Address)
+INSERT INTO Payment (BookingID, Amount, PaymentDate, PaymentStatus, PaymentMethod)
 VALUES 
-('ABC Rentals', 'John Smith', 'abc@example.com', '1234567890', '123 Main St'),
-('XYZ Rentals', 'Jane Doe', 'xyz@example.com', '0987654321', '456 Oak St'),
-('Adventure Rentals', 'Mike Johnson', 'adventure@example.com', '5555555555', '789 Elm St');
+(6, 80.00, '2024-04-30 12:00:00', 'successful', 'credit card'),
+(7, 120.00, NULL, 'pending', NULL), 
+(8, 500.00, '2024-05-09 09:00:00', 'successful', 'paypal'),
+(9, 180.00, '2024-05-14 10:00:00', 'successful', 'credit card'),
+(10, 700.00, NULL, 'pending', NULL);
+
+-- Insert more mock data into Vendor table
+INSERT INTO Vendor (VendorName, ContactPerson, Email, PhoneNumber, Address, VendorPassword)
+VALUES 
+('ABC Rentals', 'John Smith', 'abc@example.com', '1234567890', '123 Main St','1'),
+('XYZ Rentals', 'Jane Doe', 'xyz@example.com', '0987654321', '456 Oak St', '1'),
+('Adventure Rentals', 'Mike Johnson', 'adventure@example.com', '5555555555', '789 Elm St', '1');
+
+INSERT INTO Vendor (VendorName, ContactPerson, Email, PhoneNumber, Address, VendorPassword)
+VALUES 
+('Sunset Rentals', 'Sarah Johnson', 'sunset@example.com', '1112223333', '789 Pine St','1'),
+('BlueWave Rentals', 'Michael Brown', 'bluewave@example.com', '4445556666', '456 Maple St', '1'),
+('Eco Adventures', 'Emma Green', 'eco@example.com', '7778889999', '123 Cedar St', '1');
 
 -- Insert more mock data into VendorAsset table
 INSERT INTO VendorAsset (VendorID, AssetID, QuantityAvailable, RentalLocations)
 VALUES 
 (1, 1, 5, 'New York'),
 (2, 2, 3, 'Miami'),
-(3, 6, 10, 'Los Angeles');
+(3, 6, 10, 'New York'),
+(4, 3, 5, 'Los Angeles'),
+(5, 4, 3, 'Las Vegas'),
+(6, 5, 10, 'Miami');
+
+INSERT INTO VendorAsset (VendorID, AssetID, QuantityAvailable, RentalLocations)
+VALUES 
+(1, 7, 8, 'Los Angeles'),
+(2, 8, 6, 'Miami'),
+(3, 9, 15, 'New York'),
+(1, 10, 8, 'New York'),
+(2, 11, 6, 'Las Vegas'),
+(3, 12, 15, 'Los Angeles');
